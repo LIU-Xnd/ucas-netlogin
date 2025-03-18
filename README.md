@@ -12,9 +12,9 @@ $ cd ucas-netlogin/
 
 ### Install Chrome
 
-You can find the latest ChromeDriver on its official download page.
+You can find the latest Chrome on its official download page.
 
-Install it so that a binary is located in `/usr/bin/chromedriver`
+Install it so that a binary is located in `/usr/bin/google-chrome`
 
 ### Download chromedriver
 
@@ -27,6 +27,6 @@ Replace information in `./data/config` into yours.
 ### Get Started
 
 ```bash
-# Can also add it to $PATH
-$ ./ucas-netlogin
+# Say the folder is at ~/ucas-netlogin/
+$ cd ./ucas-netlogin/ && ./ucas-netlogin
 ```
