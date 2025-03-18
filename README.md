@@ -20,13 +20,13 @@ Install it so that a binary is located in `/usr/bin/google-chrome`
 
 Download chromedriver binary from its official page, so that a binary is located at `./lib/chromedriver`.
 
-### Configure User Info
+## Configure User Info
 
 Replace information in `./data/config` into yours.
 
-### Get Started
+## Get Started
 
 ```bash
 # Say the folder is at ~/ucas-netlogin/
-$ cd ./ucas-netlogin/ && ./ucas-netlogin
+$ cd ~/ucas-netlogin/ && ./ucas-netlogin
 ```
