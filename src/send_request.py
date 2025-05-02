@@ -1,12 +1,10 @@
 #!/home/xndliu/Apps/ucas-netlogin/.venv/bin/python
 
 from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
-# from selenium.webdriver.chrome.options import Options
-# from selenium.webdriver.chrome.service import Service
-# from webdriver_manager.chrome import ChromeDriverManager
 import time
 
 
@@ -14,7 +12,9 @@ def main(USERNAME: str, PASSWORD: str) -> None:
 
     # Set up the WebDriver (ensure you have the correct driver installed, e.g., chromedriver for Chrome)
     # options = Options()
-    service = webdriver.ChromeService(executable_path="../lib/chromedriver")
+    cache_path = ChromeDriverManager().install()
+    print(f"Driver is cached at {cache_path}")
+    service = webdriver.ChromeService(executable_path=cache_path)
     # options.add_argument("--disable-dev-shm-usage")
     driver = webdriver.Chrome(
         service=service,
@@ -38,11 +38,9 @@ def main(USERNAME: str, PASSWORD: str) -> None:
     password_field.send_keys(Keys.RETURN)
 
     # Wait for the page to process
-    time.sleep(5)
+    time.sleep(1)
 
     print("Form submitted successfully.")
-
-    input("Press Any to exit:")
     # Close the browser
     driver.quit()
     return
