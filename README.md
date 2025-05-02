@@ -12,21 +12,27 @@ $ cd ucas-netlogin/
 
 ### Install Chrome
 
-You can find the latest Chrome on its official download page.
+You can find the latest ChromeDriver on its official download page.
 
-Install it so that a binary is located in `/usr/bin/google-chrome`
+Install it so that a binary is located in `/usr/bin/chromedriver`
 
-### Download chromedriver
+### ~~Download chromedriver (deprecated)~~
 
-Download chromedriver binary from its official page, so that a binary is located at `./lib/chromedriver`.
+~~Download chromedriver binary from its official page, so that a binary is located at `./lib/chromedriver`.~~
 
-## Configure User Info
+Update: Some OS might automatically update Chrome so a version incompatibility might occur. The latest solution is to let selenium package handle this version compatibility. That means you have to connect to the internet manually first, and run this script, letting it install correct version of driver.
+
+### Configure User Info
 
 Replace information in `./data/config` into yours.
 
-## Get Started
+### Get Started
 
 ```bash
-# Say the folder is at ~/ucas-netlogin/
-$ cd ~/ucas-netlogin/ && ./ucas-netlogin
+export ucas-netlogin(){
+    before_wd=$(pwd);
+    cd ~/ucas-netlogin/ && ./ucas-netlogin && cd $before_wd
+}
+
+$ ucas-netlogin
 ```
