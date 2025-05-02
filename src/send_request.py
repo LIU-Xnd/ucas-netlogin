@@ -10,10 +10,22 @@ import time
 
 def main(USERNAME: str, PASSWORD: str) -> None:
 
-    # Set up the WebDriver (ensure you have the correct driver installed, e.g., chromedriver for Chrome)
-    # options = Options()
-    cache_path = ChromeDriverManager().install()
-    print(f"Driver is cached at {cache_path}")
+    # Try online
+    try:
+        cache_path = ChromeDriverManager().install()
+        print(f"Driver is cached at {cache_path}. Better clear other cached versions.")
+    except Exception as e:
+        print("Cannot connect to internet. Try using cache..")
+        from pathlib import Path
+        import glob
+
+        cache_path = Path.home() / ".wdm" / "drivers" / "chromedriver"
+        versions = list(cache_path.glob("*/*/chromedriver*/chromedriver"))
+        if versions:
+            cache_path = str(versions[0])
+            print(f"Using cache {cache_path}")
+        else:
+            raise RuntimeError("No cache found.")
     service = webdriver.ChromeService(executable_path=cache_path)
     # options.add_argument("--disable-dev-shm-usage")
     driver = webdriver.Chrome(
